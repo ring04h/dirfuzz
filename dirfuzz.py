@@ -19,6 +19,7 @@ import threading
 import Queue
 
 # 全局配置
+using_dic = './dics/dirs.txt' # 使用的字典文件
 threads_count = 10 # 线程数
 timeout = 3 # 超时时间
 allow_redirects = True # 是否允许URL重定向
@@ -75,7 +76,7 @@ def fuzz_start(siteurl, file_ext):
 	# 生成队列堆栈
 	queue = Queue.Queue()
 
-	for line in FileUtils.getLines('dirs.txt'):
+	for line in FileUtils.getLines(using_dic):
 		line = '%s/%s' % (siteurl.rstrip('/'), line.replace('%EXT%', file_ext))
 		queue.put(line)
 
