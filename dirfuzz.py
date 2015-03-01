@@ -18,10 +18,23 @@ from libs.utils.FileUtils import FileUtils
 import threading
 import Queue
 
+# 全局配置
+threads_count = 10 # 线程数
+timeout = 3 # 超时时间
+allow_redirects = True # 是否允许URL重定向
+headers = { # HTTP 头设置
+	'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.20 (KHTML, like Gecko) Chrome/19.0.1036.7 Safari/535.20',
+	'Referer' : 'http://www.google.com',
+	'Cookie': 'whoami=wyscan_dirfuzz',
+}
+proxies = { # 代理配置
+	# "http": "http://user:pass@10.10.1.10:3128/",
+	# "https": "http://10.10.1.10:1080",
+	# "http": "http://127.0.0.1:8118", # TOR 洋葱路由器
+}
+
 def dir_check(url):
-	headers = {
-		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.20 (KHTML, like Gecko) Chrome/19.0.1036.7 Safari/535.20',}
-	return requests.get(url, stream=True, headers=headers, timeout=3, allow_redirects=True)
+	return requests.get(url, stream=True, headers=headers, timeout=timeout, proxies=proxies, allow_redirects=allow_redirects)
 
 class WyWorker(threading.Thread):
 
@@ -55,9 +68,6 @@ def fuzz_start(siteurl, file_ext):
 		siteurl = 'http://%s' % siteurl
 	elif not siteurl.startswith('https://'):
 		siteurl = 'https://%s' % siteurl
-
-	# 设置线程数
-	threads_count = 10
 
 	global dir_exists
 	dir_exists = []
