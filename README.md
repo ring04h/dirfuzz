@@ -10,6 +10,7 @@ python dirfuzz.py www.wooyun.org jsp
 
 # 配置说明
 ``` python
+using_dic = './dics/dirs.txt' # 使用的字典文件
 threads_count = 10 # 线程数
 timeout = 3 # 超时时间
 allow_redirects = True # 是否允许URL重定向
