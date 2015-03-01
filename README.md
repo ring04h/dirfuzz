@@ -1,5 +1,7 @@
 # dirfuzz
 多线程网站目录穷举扫描
+> 微博：http://weibo.com/ringzero<br />
+> 邮箱：ringzero@0x557.org<br />
 
 # 使用方法
 ``` shell
