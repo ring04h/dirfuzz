@@ -67,8 +67,6 @@ def fuzz_start(siteurl, file_ext):
 
 	if not siteurl.startswith('http://'):
 		siteurl = 'http://%s' % siteurl
-	elif not siteurl.startswith('https://'):
-		siteurl = 'https://%s' % siteurl
 
 	global dir_exists
 	dir_exists = []
