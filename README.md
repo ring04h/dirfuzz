@@ -3,6 +3,9 @@
 > 微博：http://weibo.com/ringzero<br />
 > 邮箱：ringzero@0x557.org<br />
 
+# 加强版
+https://github.com/ring04h/weakfilescan
+
 # 使用方法
 ``` shell
 python dirfuzz.py www.wooyun.org php
